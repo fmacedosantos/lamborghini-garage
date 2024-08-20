@@ -3,6 +3,7 @@ import { styles } from "./styles";
 
 import {Logo} from '../../../assets/pictures/logo.png'
 import { Divider } from "../Divider";
+import { CAR_ASSETS_BASE_URL } from "../../constants/car";
 
 export default function CardView(){
     const renderLogoBox = () => {
@@ -22,11 +23,19 @@ export default function CardView(){
         )
     }
 
+    const renderCarImage = () => {
+        return(
+            <Image style={styles.image} 
+            source={{uri: `${CAR_ASSETS_BASE_URL}1.PNG`}}/>
+        )
+    }
+
     return(
         <View style={styles.imageContainer}>
             {renderLogoBox()}
             <Divider/>
             {renderCarDetails()}
+            {renderCarImage()}
         </View>
     )
 }
