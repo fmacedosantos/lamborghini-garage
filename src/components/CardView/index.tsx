@@ -1,4 +1,4 @@
-import { Image, Text, View } from "react-native";
+import { Button, Image, Text, View } from "react-native";
 import { styles } from "./styles";
 
 import Logo from '../../../assets/pictures/logo.png'
@@ -31,6 +31,17 @@ export default function CardView(){
         )
     }
 
+    const renderPriceControls = () => (
+        <View style={styles.priceLabelContainer}>
+            <Button title="<" color={'#01A6B3'}
+            onPress={() => {
+
+            }}/>
+            <Text style={styles.priceLabel}>VALOR</Text>
+            <Button title=">" color={'#01A6B3'}/>
+        </View>
+    )
+
     return(
         <View style={styles.imageContainer}>
             {renderLogoBox()}
@@ -41,6 +52,7 @@ export default function CardView(){
             <Divider/>
 
             <BuyButton/>
+            {renderPriceControls()}
         </View>
     )
 }
