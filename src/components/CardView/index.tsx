@@ -13,10 +13,20 @@ export default function CardView(){
         )
     }
 
+    const renderCarDetails = () => {
+        return(
+            <View style={{alignItems: 'center'}}>
+                <Text style={styles.carBrand}>Lamburghini</Text>
+                <Text style={styles.carName}>MODEL</Text>
+            </View>
+        )
+    }
+
     return(
         <View style={styles.imageContainer}>
             {renderLogoBox()}
             <Divider/>
+            {renderCarDetails()}
         </View>
     )
 }
