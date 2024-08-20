@@ -1,7 +1,7 @@
 import { Image, Text, View } from "react-native";
 import { styles } from "./styles";
 
-import {Logo} from '../../../assets/pictures/logo.png'
+import Logo from '../../../assets/pictures/logo.png'
 import { Divider } from "../Divider";
 import { CAR_ASSETS_BASE_URL } from "../../constants/car";
 
@@ -26,7 +26,7 @@ export default function CardView(){
     const renderCarImage = () => {
         return(
             <Image style={styles.image} 
-            source={{uri: `${CAR_ASSETS_BASE_URL}1.PNG`}}/>
+            source={{uri: `${CAR_ASSETS_BASE_URL}1.png`}}/>
         )
     }
 
@@ -34,8 +34,10 @@ export default function CardView(){
         <View style={styles.imageContainer}>
             {renderLogoBox()}
             <Divider/>
+            
             {renderCarDetails()}
             {renderCarImage()}
+            <Divider/>
         </View>
     )
 }
