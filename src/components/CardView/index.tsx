@@ -7,7 +7,7 @@ import { CAR_ASSETS_BASE_URL } from "../../constants/car";
 import BuyButton from "../BuyButton";
 import { useEffect, useState } from "react";
 import { CarModel } from "./model";
-import { loadCarData } from "./services";
+import { handleNextItem, handlePreviousItem, loadCarData } from "./services";
 
 export default function CardView(){
     const [carData, setCarData] = useState<CarModel | null>(null)
@@ -16,7 +16,7 @@ export default function CardView(){
         (async() => {
             await loadCarData(1, setCarData)
         })()
-    })
+    }, [])
 
     const renderLogoBox = () => {
         return(
@@ -45,11 +45,10 @@ export default function CardView(){
     const renderPriceControls = () => (
         <View style={styles.priceLabelContainer}>
             <Button title="<" color={'#01A6B3'}
-            onPress={() => {
-
-            }}/>
+            onPress={() => handlePreviousItem(carData, setCarData)}/>
             <Text style={styles.priceLabel}>{carData?.price}</Text>
-            <Button title=">" color={'#01A6B3'}/>
+            <Button title=">" color={'#01A6B3'}
+            onPress={() => handleNextItem(carData, setCarData)}/>
         </View>
     )
 
