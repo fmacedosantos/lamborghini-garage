@@ -5,8 +5,19 @@ import Logo from '../../../assets/pictures/logo.png'
 import { Divider } from "../Divider";
 import { CAR_ASSETS_BASE_URL } from "../../constants/car";
 import BuyButton from "../BuyButton";
+import { useEffect, useState } from "react";
+import { CarModel } from "./model";
+import { loadCarData } from "./services";
 
 export default function CardView(){
+    const [carData, setCarData] = useState<CarModel | null>(null)
+
+    useEffect(() => {
+        (async() => {
+            await loadCarData(1, setCarData)
+        })()
+    })
+
     const renderLogoBox = () => {
         return(
             <View style={styles.logoContainer}>
@@ -19,7 +30,7 @@ export default function CardView(){
         return(
             <View style={{alignItems: 'center'}}>
                 <Text style={styles.carBrand}>Lamburghini</Text>
-                <Text style={styles.carName}>MODEL</Text>
+                <Text style={styles.carName}>{carData?.carName}</Text>
             </View>
         )
     }
@@ -27,7 +38,7 @@ export default function CardView(){
     const renderCarImage = () => {
         return(
             <Image style={styles.image} 
-            source={{uri: `${CAR_ASSETS_BASE_URL}1.png`}}/>
+            source={{uri: `${CAR_ASSETS_BASE_URL}${carData?.id}.png`}}/>
         )
     }
 
@@ -37,7 +48,7 @@ export default function CardView(){
             onPress={() => {
 
             }}/>
-            <Text style={styles.priceLabel}>VALOR</Text>
+            <Text style={styles.priceLabel}>{carData?.price}</Text>
             <Button title=">" color={'#01A6B3'}/>
         </View>
     )
