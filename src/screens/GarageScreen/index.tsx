@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { StatusBar, Text, View } from "react-native";
 import { styles } from "./styles";
 import CardView from "../../components/CardView";
 
@@ -12,6 +12,7 @@ export function GarageScreen() {
         <View style={[styles.triangleCorner, styles.triangleCornerBottomRight]}/>
         <View style={[styles.triangleCorner, styles.triangleCornerBottomLeft]}/>
         <CardView/>
+        <StatusBar />
       </View>
     </View>
   );
